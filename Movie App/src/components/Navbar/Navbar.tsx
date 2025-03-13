@@ -2,6 +2,7 @@ import { AppBar, Box, Button, IconButton, InputBase, Toolbar, Typography } from 
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+
 const Navbar = () => {
   return (
     <AppBar position="static">

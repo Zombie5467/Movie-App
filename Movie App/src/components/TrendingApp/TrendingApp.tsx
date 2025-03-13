@@ -53,6 +53,8 @@ function TrendingApp() {
   );
 }
 
+//NOTA PERSONAL, RECUERDA BORRAR EL BRANCH DE LA RAMA ANTERIOR (git branch -d tmdb-integration)
+
 // 10 exportar TrendingApp
 export default TrendingApp;
 // modificar el return del componente TrendingApp card para mostrar la información de la película (titulo e imagen)
