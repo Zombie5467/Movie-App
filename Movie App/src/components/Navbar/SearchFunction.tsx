@@ -1,4 +1,8 @@
-
+import { useState, useEffect } from "react";
+import useDebounce from "../../services/useDebounce";
+import { getMulti } from "../../services/tmdbService";
+import Navbar from "./Navbar";
+import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
 // Aquí tienes los pasos detallados para implementar la barra de búsqueda con debounce en tu app. **No incluiré código, solo explicaciones detalladas.**  
 
 // ---
@@ -72,3 +76,78 @@
 
 // Si todo esto está claro, dime qué punto quieres implementar primero y lo haremos paso a paso. 🚀
 
+export interface Movie {
+    id: number; 
+    title: string;
+    backdrop_path: string;
+}
+
+export function SearchMulti() {
+  //Query es como se llama el texto de búsqueda SEGÚN EL API, también es lo que usaba antes de usar debounce
+    const [searchQuery, setSearchQuery] = useState(""); // string, ya que es el valor del input
+    const [searchResults, setSearchResults] = useState<Movie[]>([]); // Cambiar el tipo de estado a Movie[]
+    const debouncedQuery = useDebounce(searchQuery, 500); // 500ms de retraso
+    //"Envolver" searchQuery en debouncedQuery para aplicar el retraso
+
+    const handleSearchMulti = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(event.target.value);
+    }
+   
+    useEffect(() => {
+        async function fetchSearch() {
+            const data  = await getMulti(debouncedQuery); // se necesita pasar searchQuery como argumento
+            console.log("data multi recibida:", data);
+            setSearchResults(data || []);
+        }
+        
+        fetchSearch();
+    }, [debouncedQuery]); // 'searchQuery' o 'debounce' se incluye como dependencia para que se actualice al cambiar = [searchQuery]
+
+    /**
+     * Preguntar sobre esto
+     * Actualmente, useEffect está mal optimizado porque no tiene un array de dependencias. Hay que corregir eso.
+     */
+
+    return (
+        <>
+        <Navbar debouncedQuery={handleSearchMulti} /> 
+        {/* Aquí se mostrarán los resultados de la búsqueda */}  
+          {searchResults.map((result) => (
+            <Card key={result.id} style={{ maxWidth: 340 }}>
+              <CardMedia>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${result.backdrop_path}`}
+                  alt="movie"
+                ></img>
+              </CardMedia>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  {result.title}
+                </Typography>
+              </CardContent>
+            </Card>
+          ))} 
+        </>
+    )
+}
+
+export default SearchMulti;
+
+
+
+/** 
+ * NUEVO ERROR
+ * La función no presenta ninguna alerta, 
+ * sin embargo no se muestra el resultado de la búsqueda 
+ * en la pantalla o consola. ¿Qué podría estar fallando? 
+ * 
+ * Estamos obteniendo algo de la api?
+ * El código para Renderizar en pantalla esta correcto?
+ * Necesitamos un botón para hacer la búsqueda?
+ * Por que la búsqueda no funciona al presionar enter?
+ * RESUELTO:
+ *  Error encontrado: pase handleSearchMulti como prop a Navbar, pero también había que hacerlo en App.tsx
+ * ----------------------------------------------------
+ * NUEVO ERROR
+ * Debounce no retrasa lo que se escribe en consola
+ * */

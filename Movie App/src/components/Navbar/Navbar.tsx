@@ -3,8 +3,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
-const Navbar = () => {
+
+const Navbar = ({ debouncedQuery }: { debouncedQuery: (event: React.ChangeEvent<HTMLInputElement>) => void }) => {
+  // const [searchResults, setSearchResults] = useState([]);
   return (
+    
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: "1" }}>
@@ -14,6 +17,7 @@ const Navbar = () => {
             <InputBase
             placeholder="Buscar..."
             sx={{ml: 1, flex: 1, bgcolor: "white", borderRadius: 1, px: 2}}
+            onChange={debouncedQuery}
             />
             <IconButton>
                 <SearchIcon />

@@ -7,7 +7,7 @@ import TrendingApp from "./components/TrendingApp/TrendingApp";
 function App() {
   return (
     <>
-      <Navbar />
+      <Navbar debouncedQuery={(event) => console.log( event.target.value)} />
       <HeroSection />
       <TrendingApp />
     </>

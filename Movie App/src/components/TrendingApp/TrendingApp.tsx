@@ -12,7 +12,7 @@ interface Movie {
 
 // 3 crear el componente TrendingApp
 function TrendingApp() {
-  // 4 crear un estado para las películas movies
+  // 4 crear un estado "movies" para las películas
   const [movies, setMovies] = useState<Movie[]>([]);
 
   // 5 usar useEffect para obtener las películas trending, usando async con una función fetchMovies
@@ -20,7 +20,7 @@ function TrendingApp() {
     async function fetchMovies() {
       // 6 constante data y await getTrendingMovies
       const data = await getTrendingMovies();
-      console.log("data recibida:", data);
+      console.log("data trending recibida:", data);
       // 7 setMovies con data
       setMovies(data || []);
     }

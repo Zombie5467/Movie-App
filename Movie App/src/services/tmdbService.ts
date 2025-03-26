@@ -1,7 +1,7 @@
-// VITE_TMDB_BASE_URL= https:api.themoviedb.org/3
-// VITE_TMDB_BASE_URL= https:api.themoviedb.org/3/trending/movie/week?
 
 import axios from "axios";
+// import { UseDebounce } from "./useDebounce";
+//revisar por que me pide que tenga mayúscula al inicio
 
 // 2 constantes de le la url y la key
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -17,6 +17,7 @@ const tmdbApi = axios.create({
         language: "es-US",
     }
 })
+
 // Crear una función para obtener las películas populares
 export const getTrendingMovies = async () => {
     try {
@@ -28,3 +29,36 @@ export const getTrendingMovies = async () => {
         return [];
     }
 };
+
+
+// Crear una función para obtener la petición multi
+// PENDIENTE: falta hacer que esta función tome como "query" el parámetro que se le pase en la búsqueda
+export const getMulti = async ( query: string) => {
+    // debe recibir como parámetro el texto de búsqueda (`query`). 
+    // const debounceValue = UseDebounce(query, 500); 
+    try {
+        const response = await tmdbApi.get(`/search/multi?query=${query}`); //sin debounce se pone query
+        // console.log("Respuesta API:", response.data);
+        return response.data.results || [];
+    } catch (error) {
+        console.error("Error al obtener la petición multi:", error);
+        return [];
+    }
+}
+
+
+
+// Version de copilot
+// export const getMultiSearch = async (query: string) => {
+//     try {
+//         const response = await tmdbApi.get("/search/multi", {
+//             params: {
+//                 query,
+//             },
+//         });
+//         return response.data.results || [];
+//     } catch (error) {
+//         console.error("Error al obtener la búsqueda multi:", error);
+//         return [];
+//     }
+// };
