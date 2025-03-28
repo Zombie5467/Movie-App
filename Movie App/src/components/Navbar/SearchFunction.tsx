@@ -82,6 +82,12 @@ export interface Movie {
     backdrop_path: string;
 }
 
+// interface NavbarProps {
+//   // debouncedQuery: (event: React.ChangeEvent<HTMLInputElement>) => void;
+//   handleSearchMulti: (event: React.ChangeEvent<HTMLInputElement>) => void;
+//   onButtonClick?: () => Promise<void>;
+// }
+
 export function SearchMulti() {
   //Query es como se llama el texto de búsqueda SEGÚN EL API, también es lo que usaba antes de usar debounce
     const [searchQuery, setSearchQuery] = useState(""); // string, ya que es el valor del input
@@ -108,21 +114,40 @@ export function SearchMulti() {
      * Actualmente, useEffect está mal optimizado porque no tiene un array de dependencias. Hay que corregir eso.
      */
 
+    const handleButton = async () => {
+        console.log("Buscando...", searchQuery); //imprimir en consola el texto de búsqueda
+        //"botón presionado" estaba aquí y funcionaba
+
+        if(!searchQuery.trim()) {
+            console.log("favor ingrese texto valido");
+            return; 
+        }
+
+        try{
+          const result = await getMulti(searchQuery);
+          console.log("Resultado de la búsqueda:", result);//imprimir en consola el resultado de la búsqueda
+          console.log('botón presionado');
+          setSearchResults(result);
+        } catch (error) {
+          console.error("Error al buscar:", error);
+        }
+    }
+
     return (
         <>
-        <Navbar debouncedQuery={handleSearchMulti} /> 
+        <Navbar debouncedQuery={handleSearchMulti} onButtonClick={handleButton}/> 
         {/* Aquí se mostrarán los resultados de la búsqueda */}  
-          {searchResults.map((result) => (
-            <Card key={result.id} style={{ maxWidth: 340 }}>
+          {searchResults.map((multi) => (
+            <Card key={multi.id} style={{ maxWidth: 340 }}>
               <CardMedia>
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${result.backdrop_path}`}
+                  src={`https://image.tmdb.org/t/p/w500${multi.backdrop_path}`}
                   alt="movie"
                 ></img>
               </CardMedia>
               <CardContent>
                 <Typography variant="h5" component="div">
-                  {result.title}
+                  {multi.title}
                 </Typography>
               </CardContent>
             </Card>
@@ -136,7 +161,7 @@ export default SearchMulti;
 
 
 /** 
- * NUEVO ERROR
+ * NUEVO ERROR (resuelto, recuerda actualizar los comentarios)
  * La función no presenta ninguna alerta, 
  * sin embargo no se muestra el resultado de la búsqueda 
  * en la pantalla o consola. ¿Qué podría estar fallando? 
@@ -151,3 +176,13 @@ export default SearchMulti;
  * NUEVO ERROR
  * Debounce no retrasa lo que se escribe en consola
  * */
+
+/**
+ **TODOS LOS ERRORES ANTERIORES A 28/03/2024 ESTÁN RESUELTOS**
+ * - Se corrigió el error de la búsqueda al presionar enter, ahora se puede buscar sin hacer click en el botón.
+ * NUEVOS ERRORES A CORREGIR:
+ * - Se actualiza el render al escribir en el input sin presionar enter, queremos mantenerlo asi?
+ * - Resumen completo de todo hasta ahora, incluyendo errores y soluciones.
+ * - Los comentarios.
+ * - Eliminar todos los Console.log que no sean necesarios.
+ */

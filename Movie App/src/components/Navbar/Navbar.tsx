@@ -4,7 +4,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 
-const Navbar = ({ debouncedQuery }: { debouncedQuery: (event: React.ChangeEvent<HTMLInputElement>) => void }) => {
+const Navbar = ({ debouncedQuery, onButtonClick }: { debouncedQuery: (event: React.ChangeEvent<HTMLInputElement>) => void; onButtonClick: () => void }) => {
   // const [searchResults, setSearchResults] = useState([]);
   return (
     
@@ -20,7 +20,8 @@ const Navbar = ({ debouncedQuery }: { debouncedQuery: (event: React.ChangeEvent<
             onChange={debouncedQuery}
             />
             <IconButton>
-                <SearchIcon />
+                <SearchIcon onClick={onButtonClick}/>
+              {/* <button onClick={onButtonClick}>Buscar</button> */}
             </IconButton>
         </Box>
         <Button color="inherit">Inicio</Button>
