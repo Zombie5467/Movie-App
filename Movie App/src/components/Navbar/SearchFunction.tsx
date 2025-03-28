@@ -185,4 +185,5 @@ export default SearchMulti;
  * - Resumen completo de todo hasta ahora, incluyendo errores y soluciones.
  * - Los comentarios.
  * - Eliminar todos los Console.log que no sean necesarios.
+ * - navbar duplicado.
  */
