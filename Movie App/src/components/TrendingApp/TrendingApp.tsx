@@ -57,9 +57,4 @@ function TrendingApp() {
 
 // 10 exportar TrendingApp
 export default TrendingApp;
-// modificar el return del componente TrendingApp card para mostrar la información de la película (titulo e imagen)
-// 1 importar Card, CardContent, CardMedia, Typography
-// 2 componente card para rodear el componente card
-// 3 CardMedia para la imagen de la película
-// 4 CardContent para el título de la película
-// 5 Typography para el texto del título (Opcional)
+
