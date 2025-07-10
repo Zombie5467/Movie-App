@@ -1,19 +1,28 @@
 // import './App.css'
-import HeroSection from "./components/HeroSection/HeroSection";
 // import Navbar from "./components/Navbar/Navbar";
-import SearchMulti from "./components/Navbar/SearchFunction";
-import TrendingApp from "./components/TrendingApp/TrendingApp";
+// import { Details } from "@mui/icons-material";
+import Home from "./Pages/Home";
+import SearchMulti from "./components/Navbar/SearchMulti";
+import DetailsPage from "./Pages/DetailsPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { SearchPage } from "./Pages/SearchPage";
+import { Layout } from "./Pages/Layout";
 
 function App() {
   return (
     <>
-      {/* <Navbar
-        handleSearchMulti={(event) => console.log(event.target.value)}
-        onButtonClick={() => console.log("Botón presionado")}
-      /> */}
-      <SearchMulti />
-      <HeroSection />
-      <TrendingApp />
+      <Router>
+        <SearchMulti />
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/details/:media_type/:id" element={<DetailsPage />} />
+            <Route path="/details/:id" element={<DetailsPage />} />
+            {/* Ruta alternativa para detalles sin media_type?? */}
+          </Route>
+        </Routes>
+      </Router>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useDebounce = (value: string, delay: number) => {
+export const UseDebounce = (value: string, delay: number) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export const useDebounce = (value: string, delay: number) => {
   return debouncedValue;
 }
 
-export default useDebounce;
+export default UseDebounce;
 
 //📌 Nota Personal: useDebounce es un hook personalizado porque usa useState y useEffect.
 
