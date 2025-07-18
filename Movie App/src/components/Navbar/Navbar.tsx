@@ -5,7 +5,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 const Navbar = ({ debouncedQuery, onButtonClick }: { debouncedQuery: (event: React.ChangeEvent<HTMLInputElement>) => void; onButtonClick: () => void }) => {
-  // const [searchResults, setSearchResults] = useState([]);
+  
   return (
     
     <AppBar position="static">
@@ -21,7 +21,7 @@ const Navbar = ({ debouncedQuery, onButtonClick }: { debouncedQuery: (event: Rea
             />
             <IconButton>
                 <SearchIcon onClick={onButtonClick}/>
-              {/* <button onClick={onButtonClick}>Buscar</button> */}
+             
             </IconButton>
         </Box>
         <Button color="inherit">Inicio</Button>
@@ -37,3 +37,8 @@ const Navbar = ({ debouncedQuery, onButtonClick }: { debouncedQuery: (event: Rea
 };
 
 export default Navbar;
+
+
+// Este onClick no funciona asi que se puede borrar
+// const [searchResults, setSearchResults] = useState([]);
+ {/* <button onClick={onButtonClick}>Buscar</button> */}
