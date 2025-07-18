@@ -1,26 +1,22 @@
-
-import Home from "./Pages/Home";
-import DetailsPage from "./Pages/DetailsPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+// import SearchPage from "./Pages/SearchPage";
+import DetailsPage from "./Pages/DetailsPage";
 import { Layout } from "./Pages/Layout";
 
 function App() {
   return (
-    <>
-      <Router>
-        {/* <SearchMulti /> */}
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/details/:media_type/:id" element={<DetailsPage />} />
-            <Route path="/details/movie/:id" element={<DetailsPage />} />
-            <Route path="/details/tv/:id" element={<DetailsPage />} />     
-            <Route path="/details/:id" element={<DetailsPage />} />
-            {/* Ruta alternativa para detalles sin media_type?? */}
-          </Route>
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          {/* Estas rutas ahora están *dentro del Layout* */}
+          <Route index element={<Home />} />
+          {/* <Route path="search" element={<DetailsPage />} /> */}
+          <Route path="details/:media_type/:id" element={<DetailsPage />} />
+          <Route path="details/:id" element={<DetailsPage />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
