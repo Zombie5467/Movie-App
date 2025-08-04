@@ -5,7 +5,7 @@ import {
   getTvDetails,
   getPersonDetails,
 } from "../services/tmdbService";
-// Mostrar los detalles de una película o serie al hacer clic en un elemento de la lista de resultados de búsqueda.
+
 
 interface Movie {
   id: number;
@@ -14,9 +14,11 @@ interface Movie {
   backdrop_path: string;
 }
 
+// Mostrar los detalles de una película o serie al hacer clic en un elemento de la lista de resultados de búsqueda.
+
 function DetailsPage() {
-  const { id, media_type } = useParams();
   const [detalles, setDetalles] = useState<Movie[]>([]);
+  const { id, media_type } = useParams();
   
 
   useEffect(() => {

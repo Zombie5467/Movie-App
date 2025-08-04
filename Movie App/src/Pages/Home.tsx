@@ -1,15 +1,14 @@
-// una función para hacer el render de trending movies y hero section
+
 
 import HeroSection from '../components/HeroSection/HeroSection';
-import TrendingMovies from '../components/TrendingApp/TrendingApp';
-// import { SearchMulti } from "../components/Navbar/SearchMulti";
+import TrendingApp from '../components/TrendingApp/TrendingApp';
 
+// una función para hacer el render de trending movies y hero section
 const renderSections = () => {
     return (
         <>
-            {/* <SearchMulti /> */}
             <HeroSection />
-            <TrendingMovies />
+            <TrendingApp />
         </>
     );
 };
