@@ -1,14 +1,12 @@
 // import { UseDebounce } from "./useDebounce";
 //revisar por que me pide que tenga mayúscula al inicio
-import { Movie } from "../../../otros/SearchMulti";
+import { Movie } from "../../otros/SearchMulti";
 import axios from "axios";
-
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 console.log("API_KEY:", API_KEY);
 console.log("BASE_URL:", BASE_URL);
-
 
 const tmdbApi = axios.create({
   baseURL: BASE_URL,
@@ -17,7 +15,6 @@ const tmdbApi = axios.create({
     language: "es-US",
   },
 });
-
 
 export const getTrendingMovies = async () => {
   try {
@@ -30,9 +27,7 @@ export const getTrendingMovies = async () => {
   }
 };
 
-
 export const getMulti = async (query: string): Promise<Movie[]> => {
- 
   try {
     const response = await tmdbApi.get(`/search/multi?query=${query}`); //sin debounce se pone query
     // console.log("Respuesta API:", response.data);
@@ -42,8 +37,6 @@ export const getMulti = async (query: string): Promise<Movie[]> => {
     return [];
   }
 };
-
-
 
 export const getMovieDetails = async (id: number) => {
   try {
@@ -83,8 +76,8 @@ export const getPersonDetails = async (id: number) => {
 // Crear una función para obtener las películas populares
 // Crear una función para obtener la petición multi
 // PENDIENTE: falta hacer que esta función tome como "query" el parámetro que se le pase en la búsqueda
- // debe recibir como parámetro el texto de búsqueda (`query`).
-  // const debounceValue = UseDebounce(query, 500);
+// debe recibir como parámetro el texto de búsqueda (`query`).
+// const debounceValue = UseDebounce(query, 500);
 // Version de copilot
 
 // export const getMultiSearch = async (query: string) => {

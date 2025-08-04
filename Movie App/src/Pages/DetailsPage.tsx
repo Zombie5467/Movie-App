@@ -7,13 +7,14 @@ import {
 } from "../services/tmdbService";
 
 
-// Mostrar los detalles de una película o serie al hacer clic en un elemento de la lista de resultados de búsqueda.
 interface Movie {
   id: number;
   title: string; //con esta API puede ser number o string
   overview: string;
   backdrop_path: string;
 }
+
+// Mostrar los detalles de una película o serie al hacer clic en un elemento de la lista de resultados de búsqueda.
 
 function DetailsPage() {
   const [detalles, setDetalles] = useState<Movie[]>([]);

@@ -13,6 +13,8 @@ export interface Movie {
   poster_path: string;
 }
 
+// Layout para que la Navbar se muestre en todas las páginas
+
 export const Layout = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
@@ -78,7 +80,7 @@ export const Layout = () => {
   );
 };
 
-// Layout para que la Navbar se muestre en todas las páginas
+
 //Query es como se llama el texto de búsqueda SEGÚN LA API, también es lo que usaba antes de usar debounce
 // string, ya que es el valor del input
 // Cambiar el tipo de estado a Movie[]
