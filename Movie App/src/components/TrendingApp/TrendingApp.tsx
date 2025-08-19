@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { getTrendingMovies } from "../../services/tmdbService";
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
@@ -12,7 +11,6 @@ interface Movie {
 
 // Componente TrendingApp
 function TrendingApp() {
- 
   const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {

@@ -6,7 +6,6 @@ import {
   getPersonDetails,
 } from "../services/tmdbService";
 
-
 interface Movie {
   id: number;
   title: string; //con esta API puede ser number o string
@@ -19,10 +18,9 @@ interface Movie {
 function DetailsPage() {
   const [detalles, setDetalles] = useState<Movie[]>([]);
   const { id, media_type } = useParams();
-  
 
   useEffect(() => {
-    console.log("ID:", id, "MediaType:", media_type);
+    // console.log("ID:", id, "MediaType:", media_type);
 
     async function fetchDetails() {
       if (media_type === "movie" || media_type === undefined) {

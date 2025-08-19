@@ -1,35 +1,44 @@
-import { AppBar, Box, Button, IconButton, InputBase, Toolbar, Typography } from "@mui/material";
-import SearchIcon from '@mui/icons-material/Search';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {
+  AppBar,
+  Box,
+  Button,
+  IconButton,
+  InputBase,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-
-
-const Navbar = ({ debouncedQuery, onButtonClick }: { debouncedQuery: (event: React.ChangeEvent<HTMLInputElement>) => void; onButtonClick: () => void }) => {
-  
+const Navbar = ({
+  debouncedQuery,
+  onButtonClick,
+}: {
+  debouncedQuery: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onButtonClick: () => void;
+}) => {
   return (
-    
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: "1" }}>
           Movie App
         </Typography>
-        <Box sx={{display:"flex", alignItems: "center"}}>
-            <InputBase
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <InputBase
             placeholder="Buscar..."
-            sx={{ml: 1, flex: 1, bgcolor: "white", borderRadius: 1, px: 2}}
+            sx={{ ml: 1, flex: 1, bgcolor: "white", borderRadius: 1, px: 2 }}
             onChange={debouncedQuery}
-            />
-            <IconButton>
-                <SearchIcon onClick={onButtonClick}/>
-             
-            </IconButton>
+          />
+          <IconButton>
+            <SearchIcon onClick={onButtonClick} />
+          </IconButton>
         </Box>
         <Button color="inherit">Inicio</Button>
         <Button color="inherit">Películas</Button>
         <Button color="inherit">Series</Button>
         <Button color="inherit">Categorías</Button>
         <IconButton aria-label="login">
-            <AccountCircleIcon />
+          <AccountCircleIcon />
         </IconButton>
       </Toolbar>
     </AppBar>
@@ -37,8 +46,3 @@ const Navbar = ({ debouncedQuery, onButtonClick }: { debouncedQuery: (event: Rea
 };
 
 export default Navbar;
-
-
-// Este onClick no funciona asi que se puede borrar
-// const [searchResults, setSearchResults] = useState([]);
- {/* <button onClick={onButtonClick}>Buscar</button> */}
