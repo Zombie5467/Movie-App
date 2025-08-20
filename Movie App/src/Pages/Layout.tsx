@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import useDebounce from "../services/useDebounce";
 import { getMulti } from "../services/tmdbService";
 import Navbar from "../components/Navbar/Navbar";
-import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export interface Movie {

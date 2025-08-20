@@ -1,5 +1,5 @@
 //revisar por que me pide que tenga mayúscula al inicio
-import { Movie } from "../../otros/SearchMulti";
+import { Movie } from "../Pages/Layout";
 import axios from "axios";
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;

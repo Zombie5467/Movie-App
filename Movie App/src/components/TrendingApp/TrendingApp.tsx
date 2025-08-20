@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTrendingMovies } from "../../services/tmdbService";
-import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 interface Movie {
