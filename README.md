@@ -3,6 +3,8 @@
 
 Aplicación de búsqueda de películas con React, TypeScript, MUI, CSS y consumo de API REST. Esta App utiliza la API de TMDB (The Movie Data Base).
 
+
+
   ### 🛠️ Tecnologías usadas
 ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=000) 
 ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=fff) 
@@ -10,12 +12,20 @@ Aplicación de búsqueda de películas con React, TypeScript, MUI, CSS y consumo
 ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=fff) 
 ![TMDB](https://img.shields.io/badge/-TMDB-01D277?logo=themoviedatabase&logoColor=fff) 
 
+## Movie App en acción 🎬
+
+### 🔗 Despliegue en Vercel
+Puedes probar la app en producción desde aquí: [Movie App en Vercel](https://movie-app-two-gold-20.vercel.app/)
+Mira cómo funciona la app en tiempo real:
+
+![Movie App Demo](./MovieAppnimation.gif)
+
+----------
+
+
 
 ## Estado actual: *MVP (Minimum Viable Product)*
 
-  
-
-  
 
 ✅ La app funciona correctamente y muestra los datos de películas usando React Router.
 
@@ -66,5 +76,9 @@ Aplicación de búsqueda de películas con React, TypeScript, MUI, CSS y consumo
 
 ----------
 
+  
+  
+  
+  
 
 > Written with [StackEdit](https://stackedit.io/).
