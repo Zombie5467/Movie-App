@@ -36,13 +36,13 @@ export const Layout = () => {
 
   const handleButton = async () => {
     if (!searchQuery.trim()) {
-      console.log("favor ingrese texto valido");
+      // console.log("favor ingrese texto valido");
       return;
     }
 
     try {
       const result = await getMulti(searchQuery);
-      console.log("botón presionado");
+      // console.log("botón presionado");
       setSearchResults(result);
     } catch (error) {
       console.error("Error al buscar:", error);
